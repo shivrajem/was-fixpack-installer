@@ -84,16 +84,7 @@ A deployment manager must be at the same or a higher level than its nodes. If yo
   - Put credentials for an authenticated repository in an Installation Manager keyring or credential store, not in the URL. The script rejects a URL that contains credentials.
 - **iFixes:** iFixes that the new fix pack does not include are not reinstalled. Compare the before and after `versionInfo` output in the log, and get rebuilt iFixes from IBM if you need them.
 - **Paths with spaces:** running JVMs are found by `-Duser.install.root=` in the process arguments, so an install root that contains spaces is not supported for `--stop`. IBM also advises against spaces in install paths.
-- **Testing:** the script has only been tested against a mock `imcl` and a fake WAS tree. Run it in precheck mode on a real host and try `--apply` in a non-production environment first.
-
-## Tests
-
-```sh
-tests/run_tests.sh                       # bash on PATH
-BASH_BIN=/bin/bash tests/run_tests.sh    # a specific bash
-```
-
-There are 68 tests: unit, penetration and stress. They run against `tests/mocks/imcl` and a fake WAS tree built by `tests/mocks/mkwas.sh`. All 68 pass on bash 3.2 (macOS), bash 5.1 (Ubuntu 22.04) and bash 5.2 (Debian 12). Results are written to `tests/out/` and summarised in `TEST-REPORT.xlsx`.
+- **Testing:** the script has been tested with unit, security and stress tests on bash 3.2, 5.1 and 5.2, but only against a simulated Installation Manager and WAS installation. Run it in precheck mode on a real host and try `--apply` in a non-production environment first.
 
 ## Licence
 
